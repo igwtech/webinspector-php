@@ -1,0 +1,9 @@
+-cp Source
+-main NodeMain
+
+-js ./NodeMain.js
+--js-modern
+
+-lib nodejs_std
+-lib nodejs_externs
+-debug
