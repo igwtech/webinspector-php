@@ -13,4 +13,19 @@ It has been develop thanks to the following great open-source projects:
  - NodeJS: http://www.nodejs.org
  - HaXe: http://www.haxe.org
  - HaXe NodeJS: http://lib.haxe.org/p/nodejs
+ - Chromium: http://www.chromium.org/
+
+What's works:
+ - Code stepping
+ - Breakpoints
+ - Variable inspection
+
+What's missing:
+ - Stack traces
+ - Console output
+ - Expression evaluation
+ - More documentation
+ - Watched Expressions
+
+Feel free to step in and help!
 
