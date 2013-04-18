@@ -29,3 +29,6 @@ What's missing:
 
 Feel free to step in and help!
 
+LICENSE
+-------
+Licensed under GPLv2
