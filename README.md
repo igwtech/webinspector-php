@@ -35,10 +35,11 @@ Requirements:
 -------------
 
 To run this tool you require of:
-- A Webserver (I usually use Apache but it should work with any PHP supported webserver: IIS, ngix, Lighttpd, etc)
+- A Webserver (I use Apache but it should work with any PHP supported webserver: IIS, nginx, Lighttpd, etc)
 - PHP 5.2 or better
 - XDebug extension for PHP
 - NodeJS with the modules: connect, websocket & xml2js
+- Chrome WebBrowser
 
 To compile the code you additionally will need:
 - HaXe 2.10
@@ -49,11 +50,11 @@ To compile the code you additionally will need:
 How to install?:
 ----------------
 
-Configure your Webserver with PHP, if you use a Debian based linux distro this is very simple aptitude.
+Configure your Webserver with PHP, if you use a Debian based linux distro this is very simple with aptitude:
 
     # sudo apt-get install apache2 php5 libapache2-mod-php5
     
-Install and configure XDebug on your webserver.
+Install and configure XDebug on your webserver:
 
     # sudo apt-get install php5-xdebug
 
@@ -65,7 +66,7 @@ After installing, we need to customize the XDebug configuration. Append the foll
     xdebug.remote_handler=dbgp
     xdebug.remote_host=localhost
     xdebug.remote_port=9000
-    ; Uncomment the following line start the debugger automatically with navigating any PHP page.
+    ; You can uncomment the following line to start the debugger automatically when navigating any PHP page.
     ; xdebug.remote_autostart = 1
 
 Restart your webserver so it will take the new configuration:
@@ -73,11 +74,11 @@ Restart your webserver so it will take the new configuration:
     # sudo /etc/init.d/apache2 restart
 
 Now install NodeJS, for that go to http://nodejs.org/download/ and download the package for your distro.
-  You can find instructions for almost any platform at: 
+  You can find instructions for almost any platform. If you use linux I'll recommend to also check: 
   
 > https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 
-Get the debugServer js compiled source:
+Get the debugServer JavaScript compiled source from GitHub:
 
     # mkdir ~/debugServer
     # cd ~/debugServer
@@ -88,17 +89,20 @@ Install the node modules required using the Node Package Manager (npm):
     # cd ~/debugServer
     # npm install connect websocket xml2js
 
-Run the debugServer in NodeJS:
+How to load a project into the debugger?:
+-----------------------------------------
+Run the debugServer with NodeJS:
 
+    # cd ~/debugServer
     # node NodeMain.js
 
 The debugServer will create a listening socket on port 9000 for XDebug to connect to and a WebServer on port 8080 where the WebInspector interface will be served.
 
-Open your browser and point it to: 
+Open a Chrome window and point it to: 
 
 >  http://localhost:8080/devtools/devtools.html?ws=localhost:8080/debugger
 
-Now open another Browser window and point it to your PHP site on your webserver passing the XDEBUG Session parameter, for example:
+Now open another Chrome window and point it to your PHP site on your webserver passing the XDEBUG Session parameter, for example:
 
 >  http://localhost/phpsite/index.php?XDEBUG_SESSION_START=foobar
 
