@@ -19,8 +19,13 @@ class Base64 {
 		return r;
 	}
 	public static function decode(str:String):String {
+		
 		//return str.replaceEnd('=').replaceEnd('=').decode(chars);//remove padding, also does utf-8 decoding
-		return str.substr(0,str.lastIndexOf("=")).decode(chars);
+		if(str == null) return null;
+		if(str.lastIndexOf('=') > 0) 
+			str=str.substr(0,str.lastIndexOf("=")-1);
+			//trace("decoding "+str);
+		return str.decode(chars);
 
 	}
 }
